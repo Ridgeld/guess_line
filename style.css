@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+body {
+    display: flex;
+    font-family: 'Noto Sans', sans-serif;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+.wrapper{
+    display: flex;
+    width: 100%;
+    padding: 20px;
+    flex-direction: column;
+    align-items: center;
+}
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+.logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+
+}
+.outline{
+    padding: 0px 6px;
+    border: 1px solid #000;
+    border-radius: 50px;
+}
+.label{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+.line-name{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+}
+h1 {
+    font-weight: 600;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.game-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+canvas {
+    background-color: white;
+}
+
+.controls {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-width: 400px;
+}
+.input-container{
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+    width: 100%;
+}
+.options-container {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.option-btn {
+    flex-grow: 1;
+    font-family: 'Noto sans', sans-serif;
+    width: calc(100% - 7px);
+    height: calc(60px - 4px);
+    font-size: 16px;
+    font-weight: 600;
+    border: 2px solid #0066FF;
+    border-radius: 8px;
+    outline: none;
+    text-align: center;
+    color: #0066FF;
+    transition: 0.3s;
+    background: none;
+}
+
+.option-btn:hover:not(:disabled) {
+    border-color: #0066ff;
+    background-color: #0066ff;
+    color: #fff;
+}
+
+/* Стили для визуального отклика после клика */
+.option-btn.correct {
+    background-color: #90FF29;
+    color: #0066ff;
+    border-color: #90FF29;
+}
+
+.option-btn.wrong {
+    background-color: #FF2946;
+    color: #fff;
+    border-color: #FF2946;
+}
+
+/* Слегка затемняем невыбранные варианты после ответа */
+.option-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+input {
+    flex-grow: 1;
+    font-family: 'Noto sans', sans-serif;
+    width: calc(100% - 7px);
+    height: calc(60px - 4px);
+    font-size: 16px;
+    font-weight: 600;
+    border: 2px solid #0066FF;
+    border-radius: 8px;
+    outline: none;
+    text-align: center;
+    color: #0066FF;
+}
+input::placeholder{
+    font-weight: 600;
+    color: #0066FF;
+    opacity: 0.5;
+}
+button {
+    font-family: 'Noto sans', sans-serif;
+    height: 60px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    font-weight: 600;
+}
+#steerBtn{
+    border: 2px solid #0066FF;
+    background: none;
+    color: #0066FF;
+    width: 40px;
+    height: 40px;
+    transition: 0.3s;
+}
+#steerBtn:hover{
+    background: #0066FF;
+    color: #fff;
+}
+#submitBtn{
+    background-color: #0066FF;
+    color: #fff;
+    width: 100%;
+}
+#submitBtn:hover{
+    background-color: #0066FF;
+    opacity: 0.8;
+}
+
+
+/* Стили для всплывающего сообщения об ошибке */
+#popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    background: #ffd7dc;
+    color: #FF2946;
+    padding: 8px 30px;
+    border-radius: 40px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    pointer-events: none;
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+#popup.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}

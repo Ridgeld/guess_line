@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Угадай линию</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="logo outline">D/M</div>
+            <div class="label outline">Угадай что это</div>
+        </header>
+        
+        <header class="line-name">
+            <h1 id="title">Угадай линию</h1>
+            <button id="steerBtn">?</button>
+        </header>
+
+        <div class="game-container">
+            <canvas id="gridCanvas" width="500" height="500"></canvas>
+            
+            <div class="controls">
+                <div class="options-container" id="optionsContainer"></div>
+                <!-- <button id="submitBtn">Ответить</button> -->
+            </div>
+
+            <div id="popup">Попробуй еще</div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
