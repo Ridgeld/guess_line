@@ -12,6 +12,11 @@ const cy = canvas.height / 2;
 const steerBtn = document.getElementById('steerBtn');
 const optionsContainer = document.getElementById('optionsContainer');
 
+const confettiCanvas = document.getElementById('confettiCanvas');
+const customConfetti = confetti.create(confettiCanvas, {
+    resize: true,    // Автоматически подстраивать под размер окна
+    useWorker: true  // Безопасное использование воркеров (библиотека сама все настроит)
+});
 
 let isHintVisible = false; // Новая переменная для контроля подсказки
 let hintTimeout = null;
@@ -276,41 +281,50 @@ function nextRound() {
     });
 }
 function handleOptionClick(clickedBtn, selectedAnswer, correctAnswer) {
-    // Отключаем все кнопки, чтобы нельзя было нажать дважды
+    // Отключаем кнопки
     const allBtns = document.querySelectorAll('.option-btn');
     allBtns.forEach(btn => btn.disabled = true);
 
     if (selectedAnswer === correctAnswer) {
         // Правильно
         clickedBtn.classList.add('correct');
-        confetti({
-            particleCount: 100,
-            spread: 100,
-            origin: { y: 0.6 },
-            ticks: 100,
-            gravity: 2,
-        });
         
-        // Переход через 2 секунды
+        // --- НОВОЕ: Показываем холст конфетти и запускаем анимацию ---
+        confettiCanvas.classList.add('show'); 
+
+                // ИСПРАВЛЕННЫЙ ВЫЗОВ
+        customConfetti({
+            particleCount: 100, 
+            spread: 120, 
+            origin: { y: 0 }, 
+            ticks: 300,
+            gravity: 2,
+            // Строку с canvas: ... удаляем, она больше не нужна!
+        });
+
+        // Скрываем холст конфетти через некоторое время (чуть больше длительности анимации)
+        // ticks: 400 это примерно 6-7 секунд (400 / 60 кадров/сек)
+        // Скроем холст через 7 секунд.
+        setTimeout(() => {
+            confettiCanvas.classList.remove('show');
+        }, 7000); 
+
+        // Переход к следующему раунду через 2 секунды (независимо от конфетти)
         setTimeout(nextRound, 2000);
     } else {
         // Неправильно
         clickedBtn.classList.add('wrong');
-        
-        // Подсвечиваем правильный ответ зеленым, чтобы игрок мог научиться
         allBtns.forEach(btn => {
             if (btn.textContent === correctAnswer) {
                 btn.classList.add('correct');
             }
         });
 
-        // Показываем сообщение
         popup.classList.add('show');
         
-        // Убираем сообщение и идем дальше
         setTimeout(() => {
             popup.classList.remove('show');
-            setTimeout(nextRound, 800); // Переходим к следующему чуть позже
+            setTimeout(nextRound, 800);
         }, 1500);
     }
 }

@@ -68,6 +68,8 @@ h1 {
 
 canvas {
     background-color: white;
+    width: 350px;
+    height: 350px;
 }
 
 .controls {
@@ -183,7 +185,30 @@ button {
     opacity: 0.8;
 }
 
+.confetti-overlay {
+    position: absolute; /* Поверх всего */
+    top: 20px; /* Сдвигаем немного вниз от верха контейнера, как 'потолок' для конфетти */
+    left: 50%; /* Центрируем по горизонтали */
+    transform: translateX(-50%); /* Окончательное центрирование */
+    
+    /* Отзывчивая ширина: 90% от ширины контейнера, но не больше 700px */
+    width: 90%; 
+    max-width: 700px; 
+    
+    /* Высота прямоугольника конфетти (можно сделать отзывчивой или фиксированной) */
+    height: 250px; 
 
+    pointer-events: none; /* Конфетти не должны блокировать клики по кнопкам! */
+    opacity: 0; /* Изначально скрыт */
+    transition: opacity 0.3s ease; /* Плавное появление/исчезновение */
+    z-index: 5; /* Поверх холста сетки (z-index которого не задан или меньше) */
+    background-color: transparent; /* Обязательно прозрачный фон */
+}
+
+/* Класс для показа холста конфетти */
+.confetti-overlay.show {
+    opacity: 1;
+}
 /* Стили для всплывающего сообщения об ошибке */
 #popup {
     position: absolute;
@@ -197,6 +222,7 @@ button {
     font-size: 1.2rem;
     font-weight: 600;
     pointer-events: none;
+    text-align: center;
     opacity: 0;
     transition: all 0.3s ease;
     z-index: 10;
