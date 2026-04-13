@@ -9,26 +9,28 @@
 </head>
 <body>
     <div class="wrapper">
-        <header>
-            <div class="logo outline">D/M</div>
-            <div class="label outline">Плоскости и линии</div>
-        </header>
-        
-        <header class="line-name">
-            <h1 id="title">Угадай линию</h1>
-            <button id="steerBtn">?</button>
-        </header>
-
-        <div class="game-container">
-            <canvas id="gridCanvas" width="350" height="350"></canvas>
-            <canvas id="confettiCanvas" class="confetti-overlay"></canvas>
+        <div class="content">
+            <header>
+                <div class="logo outline">D/M</div>
+                <div class="label outline">Плоскости и линии</div>
+            </header>
             
-            <div class="controls">
-                <div class="options-container" id="optionsContainer"></div>
-                <!-- <button id="submitBtn">Ответить</button> -->
-            </div>
+            <header class="line-name">
+                <h1 id="title">Угадай линию</h1>
+                <button id="steerBtn">?</button>
+            </header>
 
-            <div id="popup">Попробуй еще</div>
+            <div class="game-container">
+                <canvas id="gridCanvas" width="300" height="300"></canvas>
+                <canvas id="confettiCanvas" class="confetti-overlay"></canvas>
+                
+                <div class="controls">
+                    <div class="options-container" id="optionsContainer"></div>
+                    <!-- <button id="submitBtn">Ответить</button> -->
+                </div>
+
+                <div id="popup">Попробуй еще</div>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>

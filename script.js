@@ -297,7 +297,7 @@ function handleOptionClick(clickedBtn, selectedAnswer, correctAnswer) {
             particleCount: 100, 
             spread: 120, 
             origin: { y: 0 }, 
-            ticks: 300,
+            ticks: 3000,
             gravity: 2,
             // Строку с canvas: ... удаляем, она больше не нужна!
         });
