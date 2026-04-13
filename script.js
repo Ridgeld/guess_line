@@ -284,6 +284,13 @@ function nextRound() {
     // Выбираем случайную фигуру
     const randomIndex = Math.floor(Math.random() * shapesData.length);
     currentShape = shapesData[randomIndex];
+    if (currentShape && currentShape.type) {
+        title.textContent = currentShape.type === 'линия' ? "Угадай линию" : "Угадай плоскость";
+    } else {
+        // На случай, если в JSON забыли указать type
+        title.textContent = "Угадай фигуру"; 
+    }
+    
     renderScene();
 
     // Очищаем старые кнопки
