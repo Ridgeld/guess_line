@@ -28,7 +28,7 @@ body {
     padding-inline: 5%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: flex-start;
     margin-top: 10px;
 }
@@ -77,19 +77,27 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
     margin-top: 20px;
+    width: 100%; 
+    max-width: 700px; /* Максимальная ширина на ПК */
+    box-sizing: border-box;
 }
 
-canvas {
+/* canvas {
     background-color: white;
-    width: 350px;
-    height: 350px;
+    width: 300px;
+    height: 300px;
 
 
-    
+} */
+#gridCanvas {
+    /* Холст всегда занимает 100% ширины своего контейнера */
+    width: 100%; 
+    background-color: white;
+    border-radius: 8px;
+    /* Убираем жесткий border, если он визуально съезжает, или оставляем */
+    border: 1px solid #e0e0e0;
 }
-
 
 
 

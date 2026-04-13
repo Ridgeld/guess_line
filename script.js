@@ -5,9 +5,9 @@ const ctx = canvas.getContext('2d');
 const popup = document.getElementById('popup');
 const title = document.getElementById('title');
 // Настройки сетки
-const gridStep = 40; 
-const cx = canvas.width / 2 + 60; // Центр смещен немного вправо, как на картинке
-const cy = canvas.height / 2;
+let gridStep = 40; 
+let cx = 0; 
+let cy = 0;
 
 const steerBtn = document.getElementById('steerBtn');
 const optionsContainer = document.getElementById('optionsContainer');
@@ -32,6 +32,29 @@ const connect_line_color = '#80B3FF';
 const X_color = '#90FF29';
 const Y_color = '#FF2946';
 const Z_color = '#0066FF';
+
+
+function resizeCanvas() {
+    // Получаем реальные размеры холста, которые ему выдал CSS
+    const rect = canvas.getBoundingClientRect();
+    
+    // Задаем внутренние атрибуты холста равными его физическому размеру на экране
+    canvas.width = rect.width;
+    
+    // Высоту можно сделать пропорциональной (например, 4:3) или фиксированной.
+    // Сделаем так: высота = 75% от ширины, но не больше 500px и не меньше 300px
+    canvas.height = Math.max(420, Math.min(rect.width * 0.2, 500)); 
+
+    // Пересчитываем центр координат (оси теперь всегда будут по центру экрана)
+    cx = canvas.width / 2 + 80;
+    cy = canvas.height / 2;
+
+    // Перерисовываем всё с новыми координатами
+    renderScene();
+}
+
+// Добавляем "слушатель": когда пользователь крутит телефон или меняет размер окна браузера — пересчитываем холст
+window.addEventListener('resize', resizeCanvas)
 
 // 1. Отрисовка фона (сетки)
 function drawGrid() {
@@ -197,7 +220,7 @@ function drawHintText() {
 
 // Главная функция рендера сцены
 function renderScene() {
-    title.textContent = currentShape.type === 'линия' ? "Угадай линию" : "Угадай плоскость"
+    // title.textContent = currentShape.type === 'линия' ? "Угадай линию" : "Угадай плоскость"
     drawGrid();
     drawAxes();
     if (currentShape) {
@@ -401,4 +424,5 @@ function generateOptions(correctAnswer) {
 // });
 
 // Инициализация
+resizeCanvas();
 loadData();
