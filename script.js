@@ -202,13 +202,13 @@ function drawHintText() {
     const text = currentShape.answer;
     
     ctx.save();
-    ctx.font = 'bold 24px "Amatic SC"'; // Шрифт
+    ctx.font = 'bold 20px "Amatic SC"'; // Шрифт
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
 
     // Координаты для текста (сверху по центру)
-    const textX = canvas.width / 2;
-    const textY = 40;
+    const textX = canvas.width / 2 - 30;
+    const textY = 20;
 
     // Рисуем полупрозрачную подложку для читаемости
 
@@ -290,7 +290,7 @@ function nextRound() {
         // На случай, если в JSON забыли указать type
         title.textContent = "Угадай фигуру"; 
     }
-    
+
     renderScene();
 
     // Очищаем старые кнопки
